@@ -1,0 +1,283 @@
+:root{
+    --blanco: #FFF;
+    --negro: #000;
+    --azul: #0097a7;
+    --azulC:#0000FF;
+    --amarillo: #FFCE00;
+    --gris: #593ebd;
+    --morado:rgb(39, 78, 177);
+
+    --fuentePrincipal: 'Krub', sans-serif;
+}
+
+/*Globales*/
+html{
+    font-size: 62.5%;/*Hace que se adapte en cualquier tamaño del navegador (Chrome)*/
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;/*Esto hace que en el tamaño de las imagenes no afecte el padding
+    NOTA: tiene que ir el "box-sizing: border-box;" en html*/
+}
+
+body{
+    font-size: 1.6rem;
+    /*font-family: var(--fuentePrincipal);*/
+    background-color: var(--azul);
+    line-height: 1.5;
+    /*background-image: linear-gradient(to top, var(--azul) 0%, var(--blanco) 100%);*/
+}
+
+p{
+    color: var(--blanco);
+    font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    width: 100%;/*Especifica la anchura*/
+}
+
+.contenedor{
+    max-width: 90rem;/*Ancho del menu*/
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 3.8rem;/*Tamaño de las letras*/
+}
+
+h2{
+    font-size: 2.8rem;/*Tamaño de las letras*/
+}
+
+h3{
+    font-size: 1.8rem;/*Tamaño de las letras*/
+}
+
+h1,h2,h3{
+    text-align: center;
+    color: var(--negro);
+    font-family: var(--fuentePrincipal);
+}
+
+/*HEADER*/
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.header__logo{
+    margin: 2rem 0;
+}
+
+/*NAVEGACION*/
+.navegacion{
+    display: flex;
+    justify-content: center;
+    background-color: var(--morado);
+    padding: 1rem 0;
+    /*gap: 2rem;/*Nuevo, separa los enlaces*/
+}
+
+.navegacion__enlace{
+    color: var(--blanco);
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    margin-right: 2rem;/*Esto separa los enlaces NOTA: es mejor con gap -- nuevo*/
+}
+
+/*NOTA: esto last-of-type elimina el ultimo espacio de la ultima enlace*/
+.navegacion__enlace:last-of-type{
+    margin-right: 0;
+}/*Si se usa gap esto se elimina, ya no es necesario*/
+
+
+.navegacion__enlace--activo,
+.navegacion__enlace:hover{
+    color: var(--amarillo);
+}
+
+
+/*GRID*/
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    
+}
+
+@media (min-width: 768px) {
+    .grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+/*
+    .producto:nth-child(4){
+        grid-column: 1/3;
+        grid-template-rows: auto auto auto;
+    }
+
+    .producto:nth-child(10){
+        grid-column: 2/4;
+
+    }
+    */
+}
+
+.grafico{
+    min-height: 30rem;
+    /*los backgroup hace que la imagen no se repita y en la segunda que amplie
+    background-repeat: no-repeat;
+    background-size: cover;
+    */
+    grid-column: 1/3;
+}
+
+.grafico--camisas{
+    grid-row: 2/3;
+    background-image: url(../img/grafico1.jpg);
+}
+
+.grafico--node{
+    grid-row: 8/9;
+    background-image: url(../img/grafico2.jpg);
+}
+
+@media (min-width: 768px) {
+    .grafico--node{
+        grid-row: 5/6;
+        grid-column: 2/4;
+    }
+}
+
+.producto{
+    background-color: var(--gris);
+    padding: 1rem;
+}
+
+.producto__nombre{
+    font-size: 2.5rem;
+}
+
+.producto__precio{
+    font-size: 2rem;
+    color: var(--amarillo);
+}
+
+.producto__nombre,.producto__precio{
+    font-family: var(--fuentePrincipal);
+    margin: 1rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+
+/*FOOTER*/
+.footer{
+    background-color: var(--morado);
+    padding: .5rem 0;
+    margin-top: 2rem;
+}
+
+.footer__texto{
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: var(--fuentePrincipal);
+}
+
+/*NOSOTROS*/
+.nosotros{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+}
+
+.nosotros__imagen{
+    grid-row: 1/2;
+}
+
+@media (min-width: 768px) {
+    .nosotros{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+
+    .nosotros__imagen{
+        grid-column: 2/3;
+    }
+}
+
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.bloque{
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .bloques{
+        grid-template-columns: repeat(4, 1fr);        
+    }
+}
+
+.bloque__desc{
+    margin: 0;
+}
+
+/*Producto detalle*/
+@media (min-width: 768px) {
+    .camisa{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+    }
+}
+
+.formulario{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.formulario__campo{
+    border: 1rem solid var(--azulC);
+    background-color: transparent;
+    font-size: 1.9rem;
+    padding: .7rem;
+    appearance: none;
+    font-family: Arial, Helvetica, sans-serif;
+    width: min(60rem, 100%);
+}
+
+.camisa__informacion,.nosotros__texto{
+    text-align: justify;
+}
+
+.camisa__boton{
+    background-color: var(--amarillo);
+    font-size: 2rem;
+    border: none;
+    font-family: var(--fuentePrincipal);
+    text-transform: uppercase;
+    padding: 1.5rem;
+    /*transition.- es como para animaciones*/
+    transition: font-size .3s ease;
+    transition: background-color .3s ease;
+    grid-column: 1/3;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+.camisa__boton:hover{
+    cursor: pointer;
+    font-size: 3rem;
+    background-color: var(--gris);
+}
